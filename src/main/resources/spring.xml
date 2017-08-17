@@ -22,6 +22,9 @@
         </property>
     </bean>
 
+
+
+
     <!-- 导入配置文件 -->
     <import resource="spring-mybatis.xml"></import>
     <import resource="spring-shiro.xml"></import>
