@@ -12,4 +12,7 @@ public interface UserDao {
     //更新用户信息
     public void updateUserByPrimaryKey(UserModel userModel);
 
+    //用戶註冊
+    public void register(UserModel userModel);
+
 }

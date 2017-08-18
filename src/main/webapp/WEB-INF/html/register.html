@@ -27,15 +27,15 @@
             </div>
             <h3>註冊新用戶 to ONE+</h3>
             <p>Create account to see it in action.</p>
-            <form class="m-t" role="form" action="login.html">
+            <form class="m-t" role="form" action="/loginMain/registerStart" method="get">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name" required="">
+                    <input type="text" class="form-control" placeholder="Name" required="" name="userName">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email" required="">
+                    <input type="email" class="form-control" placeholder="Email" required="" name="email">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" class="form-control" placeholder="Password" required="" name="password">
                 </div>
                 <div class="form-group">
                         <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> 同意所有條款 </label></div>
@@ -61,6 +61,34 @@
                 radioClass: 'iradio_square-green',
             });
         });
+
+/*
+        function  register(){
+            alert("進入註冊js方法");
+            var userName=$("#userName").val();
+            var email=$("#email").val();
+            var password=$("#password").val();
+
+            $.ajax({
+
+                type:"post",
+                url:"loginMain/registerStart",
+                data:{"userName":userName,"email":email,"password":password},
+                cache:false,
+                success:function(data){
+
+                    if(data.status=="200"){
+                        alert(data.message);
+                        document.location ='/loginMain/index';
+                    }else {
+                        alert(data.message);
+                    }
+                },error:function(data){
+                    alert(data.message);
+                }
+            });
+        }
+        */
     </script>
 </body>
 

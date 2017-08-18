@@ -19,4 +19,9 @@ public class UserServiceImpl implements UserService {
     public void updateUserByPrimaryKey(UserModel userModel) {
          userDao.updateUserByPrimaryKey(userModel);
     }
+
+     //用戶註冊
+    public void insertUser(UserModel userModel) {
+        userDao.register(userModel);
+    }
 }

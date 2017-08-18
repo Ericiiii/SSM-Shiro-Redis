@@ -48,6 +48,15 @@
         </set>
     </update>
 
+    <!-- 用戶註冊 -->
+    <insert id="register"  parameterType="UserModel">
+
+        INSERT INTO USER(username,email,password,createTime,lastLoginTime,status)
+        VALUES (#{userName},#{email},#{password},#{createTime},#{lastLoginTime},#{status});
+
+
+    </insert>
+
 
 
 

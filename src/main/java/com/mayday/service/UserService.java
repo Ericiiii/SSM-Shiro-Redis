@@ -8,4 +8,7 @@ public interface UserService {
 
     //更新用户信息
     void updateUserByPrimaryKey(UserModel userModel);
+
+    //用戶註冊
+    void insertUser(UserModel userModel);
 }

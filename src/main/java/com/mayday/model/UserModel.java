@@ -30,6 +30,15 @@ public class UserModel {
         this.status = status;
     }
 
+    public UserModel( String userName, String email, String password, Date createTime, Date lastLoginTime, Long status) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.createTime = createTime;
+        this.lastLoginTime = lastLoginTime;
+        this.status = status;
+    }
+
     public UserModel(String userName, String password) {
         this.userName = userName;
         this.password = password;

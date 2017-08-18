@@ -69,13 +69,13 @@
                 cache:false,
                 success:function(data){
 
-                   if(data=="success"){
-                       document.location ='/index'
+                   if(data.message=="success"){
+                       document.location ='/loginMain/index';
                    }else {
-                       alert(data);
+                       alert(data.message);
                    }
                 },error:function(data){
-                    alert(data);
+                    alert(data.message);
                 }
             });
 
