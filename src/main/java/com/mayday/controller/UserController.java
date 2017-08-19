@@ -99,7 +99,7 @@ public class UserController extends BaseController{
     }
 
     //用戶註冊
-    @RequestMapping(value="/registerStart",method=RequestMethod.GET)
+    @RequestMapping(value="/registerStart",method=RequestMethod.POST)
     public ModelAndView register(@RequestParam Map<String,String> requestParams){
         log.info("~~~~~進入註冊方法~~~~~");
 
