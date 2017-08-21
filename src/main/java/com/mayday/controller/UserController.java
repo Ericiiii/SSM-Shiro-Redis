@@ -29,7 +29,7 @@ import java.util.Map;
 
 @Controller
 
-@RequestMapping("loginMain")
+@RequestMapping("/loginMain")
 public class UserController extends BaseController{
 
     @Autowired
@@ -39,22 +39,17 @@ public class UserController extends BaseController{
     private UserService userService;
 
     Log log= LogFactory.getLog(UserController.class);
-
+/*
     @RequestMapping(value="/loginJump",method = RequestMethod.GET)
     public ModelAndView login(){
         return new ModelAndView("/login");
-    }
+    }*/
 
     //登录操作
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> login(String userName, String password){
-
-
-
-
         try {
-
             TokenManage.login(new UserModel(userName,password),true);
 
         } catch (IncorrectCredentialsException ice) {
@@ -85,25 +80,28 @@ public class UserController extends BaseController{
 
     //退出登錄
     public String loginOut(){
-
-
-
         return "";
     }
 
 
-    //註冊
+   /* //註冊
     @RequestMapping(value="/register",method = RequestMethod.GET)
     public ModelAndView register(){
         return new ModelAndView("/register");
     }
-
+*/
     //用戶註冊
     @RequestMapping(value="/registerStart",method=RequestMethod.POST)
-    public ModelAndView register(@RequestParam Map<String,String> requestParams){
+    public Map<String,Object> register(@RequestParam Map<String,String> requestParams){
         log.info("~~~~~進入註冊方法~~~~~");
 
         String userName=requestParams.get("userName");
+        //查询用户名是否已经被注册
+        UserModel model=userService.findUserByUserName(new UserModel(userName,""));
+        if(model!=null){
+           resultMap.put("message","用户名已经被注册!");
+           return resultMap;
+        }
         String email=requestParams.get("email");
         String password= MD5Utils.encode(requestParams.get("password"));  //密碼使用MD5加密處理
 
@@ -114,16 +112,13 @@ public class UserController extends BaseController{
 
         } catch (Exception e) {
             e.printStackTrace();
-            ModelAndView modelAndView=new ModelAndView("/404");
-            modelAndView.addObject("message","用戶註冊失敗");
-           return modelAndView;
+           resultMap.put("message","用户注册失败！");
+           return resultMap;
         }
+          resultMap.put("status","200");
+          resultMap.put("message","注册成功！");
 
-        ModelAndView modelAndView=new ModelAndView("/index");
-        modelAndView.addObject("status",200);
-        modelAndView.addObject("message","用戶註冊成功！");
-
-        return modelAndView;
+        return resultMap;
     }
 
 

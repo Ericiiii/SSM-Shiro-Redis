@@ -24,4 +24,9 @@ public class UserServiceImpl implements UserService {
     public void insertUser(UserModel userModel) {
         userDao.register(userModel);
     }
+
+    //根据用户名查询用户是否存在
+    public UserModel findUserByUserName(UserModel userModel){
+       return  userDao.findUserByUserName(userModel);
+    }
 }

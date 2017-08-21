@@ -704,7 +704,7 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
                   target,
                   '" ');
       }
-      html.push('href="',
+      html.push('href="../',
                 url.replace(/"/g, '&quot;'),
                 '">');
       addText(text);

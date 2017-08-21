@@ -15,4 +15,7 @@ public interface UserDao {
     //用戶註冊
     public void register(UserModel userModel);
 
+    //查询用户是否存在
+    public UserModel findUserByUserName(UserModel userModel);
+
 }

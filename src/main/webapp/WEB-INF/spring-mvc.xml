@@ -23,6 +23,7 @@
 	<mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/" />
 	<mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
 	<mvc:resources  mapping="/html/*.html" location="/WEB-INF/html/"/>
+	<mvc:resources  mapping="/assets/**" location="/WEB-INF/assets/"/>
 
 
 

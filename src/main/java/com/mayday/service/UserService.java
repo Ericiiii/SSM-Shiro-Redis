@@ -11,4 +11,6 @@ public interface UserService {
 
     //用戶註冊
     void insertUser(UserModel userModel);
+
+    UserModel findUserByUserName(UserModel userModel);
 }
