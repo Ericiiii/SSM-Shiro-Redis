@@ -92,32 +92,37 @@ public class UserController extends BaseController{
 */
     //用戶註冊
     @RequestMapping(value="/registerStart",method=RequestMethod.POST)
-    public Map<String,Object> register(@RequestParam Map<String,String> requestParams){
+    @ResponseBody
+    public Map<String,Object> register(String userName,String password,String email){
         log.info("~~~~~進入註冊方法~~~~~");
 
-        String userName=requestParams.get("userName");
+
         //查询用户名是否已经被注册
         UserModel model=userService.findUserByUserName(new UserModel(userName,""));
         if(model!=null){
+
            resultMap.put("message","用户名已经被注册!");
            return resultMap;
-        }
-        String email=requestParams.get("email");
-        String password= MD5Utils.encode(requestParams.get("password"));  //密碼使用MD5加密處理
 
-        UserModel userModel=new UserModel(userName,email,password,new Date(),null,1L);
+        }
+
+        String MD5Password= MD5Utils.encode(password);  //密碼使用MD5加密處理
+
+        UserModel userModel=new UserModel(userName,email,MD5Password,new Date(),null,1L);
 
         try {
             userService.insertUser(userModel);
+
+
 
         } catch (Exception e) {
             e.printStackTrace();
            resultMap.put("message","用户注册失败！");
            return resultMap;
         }
-          resultMap.put("status","200");
-          resultMap.put("message","注册成功！");
 
+
+        resultMap.put("message","success");
         return resultMap;
     }
 
